@@ -154,12 +154,12 @@ exports.testCmd = (rl,id) => {
                 if(respuesta === quiz.answer.toLowerCase()){
 
                     log(`Su respuesta es:`);
-                    biglog('Correcta','green');
+                    log('Correcta','green');
                     rl.prompt();
 
                 }else{
                     log(`Su respuesta es:`);
-                    biglog('Incorrecta','red');
+                    log('Incorrecta','red');
                     rl.prompt();
 
                 }
@@ -188,7 +188,7 @@ exports.playCmd = rl =>{
         if(toBeResolved.length === 0 ){
             log(`No hay nada más que preguntar`);
             log(`Fin del juego. Aciertos: ${score}`);
-            biglog(`${score}`, 'magenta');
+           // biglog(`${score}`, 'magenta');
 
         rl.prompt();
 
@@ -212,7 +212,7 @@ exports.playCmd = rl =>{
                 }else{
                     log(`INCORRECTO`);
                     log(`Fin del juego. Aciertos: ${score}`);
-                    biglog(`${score}`, 'magenta');
+                   // biglog(`${score}`, 'magenta');
                     rl.prompt();
                 }
 
