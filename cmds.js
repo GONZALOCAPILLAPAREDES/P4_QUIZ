@@ -187,7 +187,7 @@ exports.playCmd = rl =>{
     const playOne = () =>{
         if(toBeResolved.length === 0 ){
             log(`No hay nada más que preguntar`);
-            log(`Fin del juego. Aciertos: ${score}`);
+            log(`Fin del juego. Aciertos: ${colorize(score,'green')}`);
            // biglog(`${score}`, 'magenta');
 
         rl.prompt();
@@ -203,6 +203,10 @@ exports.playCmd = rl =>{
                 if(resp.trim().toLowerCase() === randomquiz.answer.toLowerCase()){
 
                     score++;
+
+                    console.log("Su respuesta es:");
+                    log('Incorrecta', 'green');
+
                     log(`CORRECTO - Lleva ${score} aciertos. `);
 
 
@@ -210,8 +214,9 @@ exports.playCmd = rl =>{
                     playOne();
 
                 }else{
-                    log(`INCORRECTO`);
-                    log(`Fin del juego. Aciertos: ${score}`);
+                    console.log("Su respuesta es:");
+                    log('Incorrecta', 'red');
+                    log(`Fin del juego. Aciertos: ${colorize(score,'green')}`);
                    // biglog(`${score}`, 'magenta');
                     rl.prompt();
                 }
