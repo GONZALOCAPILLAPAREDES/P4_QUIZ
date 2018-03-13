@@ -245,6 +245,9 @@ exports.testCmd = (rl,id) => {
            errorlog(`El quiz es erróneo: `);
            error.errors.forEach(({message}) => errorlog(message));
           })
+          .catch(error => {
+              errorlog(error.message);
+          })
           .then(() =>{
               rl.prompt();
           });
