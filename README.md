@@ -1,2 +1,2 @@
-# P3_QUIZ
+# P2_QUIZ
 Quiz CORE (entrega ")
