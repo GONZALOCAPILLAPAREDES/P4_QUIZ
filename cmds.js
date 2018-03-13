@@ -58,11 +58,11 @@ exports.listCmd = rl => {
 const validateId = id =>{
     return new Sequelize.Promise((resolve, reject) =>{
         if (typeof id === "undefined"){
-            reject (new Error (`Falta el parámetro <id>.`));
+            reject(new Error(`Falta el parámetro <id>.`));
         }else{
             id = parseInt(id);
             if(Number.isNaN(id)){
-                reject (new Error (`El valor del parámetro <id> no es un número.`));
+                reject(new Error (`El valor del parámetro <id> no es un número.`));
             }else{
                 resolve(id);
             }
@@ -202,11 +202,14 @@ exports.editCmd = (rl,id) => {
             return quiz.save();
         })
         .then(quiz => {
-            log(`Se ha cambiafo el quiz ${colorize(quiz.id,'magenta')} por: ${quiz.question} ${colorize('=>','magenta')} ${quiz.answer}`)
+            log(`Se ha cambiado el quiz ${colorize(quiz.id,'magenta')} por: ${quiz.question} ${colorize('=>','magenta')} ${quiz.answer}`)
         })
         .catch(Sequelize.ValidationError, error => {
             errorlog('El quiz es erróneo:');
             error.errors.forEach(({message}) => errorlog(message));
+        })
+        .catch(error => {
+            errorlog(error.message)
         })
         .then(() => {
             rl.prompt();
