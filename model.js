@@ -1,8 +1,8 @@
-const Sequelize = require('sequeLize');
+const Sequelize = require('sequelize');
 
- const sequeLize = new Sequelize("sqLite:quizzes.sqLite",{logging: false});
+ const sequelize = new Sequelize("sqLite:quizzes.sqLite",{logging: false});
 
- sequeLize.define('quiz',{
+ sequelize.define('quiz',{
      question:{
          type: Sequelize.STRING,
          unique: {msg:"Ya existe esta pregunta"},
@@ -14,11 +14,11 @@ const Sequelize = require('sequeLize');
      }
  });
 
- sequeLize.sync()
-     .then(() => sequeLize.models.quiz.count())
+ sequelize.sync()
+     .then(() => sequelize.models.quiz.count())
      .then(count => {
          if(!count){
-             return sequeLize.models.quiz.bulkCreate([
+             return sequelize.models.quiz.bulkCreate([
                  {question: "Capital de Italia", answer:"Roma"},
                  {question: "Capital de Francia", answer:"París"},
                  {question: "Capital de España", answer:"Madrid"},
@@ -29,5 +29,5 @@ const Sequelize = require('sequeLize');
      .catch(error =>{
          console.log(error);
      });
- module.exports = sequeLize;
+ module.exports = sequelize;
 
