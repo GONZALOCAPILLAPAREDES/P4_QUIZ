@@ -234,16 +234,16 @@ exports.testCmd = (socket,rl,id) => {
                         respuesta = answer.trim().toLowerCase();
 
                         if(respuesta === quiz.answer.toLowerCase()){
-                            console.log(socket,`Respuesta correcta`);
+                            log(socket,`Respuesta correcta`);
 
                         } else{
-                            console.log(socket,`Respuesta incorrecta fin`);
+                            log(socket,`Respuesta incorrecta fin`);
                         }
                   })
           })
           .catch(Sequelize.ValidationError, error => {
            errorlog(socket,`El quiz es erróneo: `);
-           error.errors.forEach(({message}) => errorlog(socket,message));
+           error.errors.forEach(({message}) => errorlog(message));
           })
           .catch(error => {
               errorlog(socket,error.message);
@@ -284,10 +284,10 @@ exports.playCmd = (socket, rl) =>{
                     .then(answer => {
                         if (answer.toLowerCase().trim() === randomquiz.answer.toLowerCase().trim()) {
                             score++;
-                            console.log(socket,` Respuesta Correcta`);
+                            log(socket,` Respuesta Correcta`);
                             return playOne();
                         } else {
-                            console.log(socket,`Respuesta Incorrecta`);
+                            log(socket,`Respuesta Incorrecta`);
 
                         }
                     })
@@ -307,7 +307,7 @@ exports.playCmd = (socket, rl) =>{
             errorlog(socket,error.message);
         })
         .then(() =>{
-            console.log(socket,'Fin'+ score);
+            log(socket,'Fin'+ score);
             rl.prompt();
         });
   };
